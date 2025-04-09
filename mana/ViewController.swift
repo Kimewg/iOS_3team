@@ -103,12 +103,12 @@ class ViewController: UIViewController {
             paymentButton.setTitle("전체결제", for: .normal)
             paymentButton.setTitleColor(.white, for: .normal)
             paymentButton.backgroundColor = .orange
-            paymentButton.layer.cornerRadius = 8
+            paymentButton.layer.cornerRadius = 15
             paymentButton.addTarget(self, action: #selector(paymentButtonTapped), for: .touchDown)
             
             resetButton.setTitle("전체취소", for: .normal)
             resetButton.setTitleColor(.white, for: .normal)
-            resetButton.layer.cornerRadius = 8
+            resetButton.layer.cornerRadius = 15
             resetButton.layer.borderWidth = 1
             resetButton.layer.borderColor = UIColor.orange.cgColor
             resetButton.addTarget(self, action: #selector(resetButtonTapped), for: .touchDown)
@@ -156,16 +156,18 @@ class ViewController: UIViewController {
             
             paymentButton.snp.makeConstraints {
                 $0.top.equalTo(totalLabel3.safeAreaLayoutGuide.snp.top).offset(650)
-                $0.width.equalTo(80)
-                $0.right.equalTo(-100)
+                $0.width.equalTo(100)
+                $0.bottom.equalTo(-70)
+                $0.right.equalTo(-80)
                 
                 
             }
             
             resetButton.snp.makeConstraints {
                 $0.top.equalTo(totalLabel3.safeAreaLayoutGuide.snp.top).offset(650)
-                $0.width.equalTo(80)
-                $0.right.equalTo(-200)
+                $0.width.equalTo(100)
+                $0.bottom.equalTo(-70)
+                $0.left.equalTo(80)
             }
         }
         
