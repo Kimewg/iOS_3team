@@ -85,7 +85,6 @@ class ViewController: UIViewController {
         let selectedGenre = sender.currentTitle ?? ""
         print("선택된 장르: \(selectedGenre)")
     }
-
     
     
     
