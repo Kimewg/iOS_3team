@@ -1,5 +1,5 @@
 //
-//  mana.swift
+//  mana.cell.swift
 //  mana
 //
 //  Created by 강성훈 on 4/8/25.
@@ -14,10 +14,16 @@ class ComicCell: UITableViewCell {
     let countlabel = UILabel()
     let plusbutton = UIButton()
     let minusbutton = UIButton()
+    var count = 0
+    var comicdata: Comic!
     
-    func configure(with comic: comic) {
+    func cellConfigure(with comic: Comic) {
+        self.comicdata = comic
         titlelabel.text = comic.title
         pricelabel.text = "\(comic.price)원"
+        count = comicCountDic[comic.title] ?? 0
+        countlabel.text = "\(count)"
+        
     }
     //초기화
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -51,6 +57,9 @@ class ComicCell: UITableViewCell {
         minusbutton.titleLabel?.font = .boldSystemFont(ofSize: 20)
         plusbutton.titleLabel?.font = .boldSystemFont(ofSize: 20)
         
+        minusbutton.addTarget(self, action: #selector(minusClick), for: .touchUpInside)
+        plusbutton.addTarget(self, action: #selector(plusClick), for: .touchUpInside)
+        
         //SnapKit 제약 설정
         titlelabel.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(20)
@@ -78,5 +87,25 @@ class ComicCell: UITableViewCell {
             $0.centerY.equalTo(countlabel)
         }
     }
+    @objc func plusClick(sender: UIButton) {
+        count += 1
+        //comicCountDic에 카운트 저장.
+        comicCountDic[comicdata.title] = count
+        countlabel.text = "\(count)"
+        pricelabel.text = "\(comicdata.price * count)원"
+        return
+    }
+    @objc func minusClick(sender: UIButton) {
+//        var realprice = comicdata.price
+        if count > 0 {
+            count -= 1
+            //comicCountDic에 카운트 저장.
+            comicCountDic[comicdata.title] = count
+            countlabel.text = "\(count)"
+            pricelabel.text = "\(comicdata.price * count)원"
+            return
+        }
+    }
 }
+
 
