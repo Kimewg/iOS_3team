@@ -88,16 +88,16 @@ class ViewController: UIViewController {
     
     
     
-//     gpt의 도움으로 넣어둠
-     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MangaCollectionViewCell.identifier, for: indexPath) as? MangaCollectionViewCell else {
-            return UICollectionViewCell()
-        }
-
-        let imageName = mangaImageNames[indexPath.item]
-        cell.configure(imageName: imageName)
-        return cell
-    }
-   
+////     gpt의 도움으로 넣어둠
+//     
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MangaCollectionViewCell.identifier, for: indexPath) as? MangaCollectionViewCell else {
+//            return UICollectionViewCell()
+//        }
+//
+//        let imageName = mangaImageNames[indexPath.item]
+//        cell.configure(imageName: imageName)
+//        return cell
+//    }
+//   
 }
