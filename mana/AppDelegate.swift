@@ -1,14 +1,16 @@
 //
 //  AppDelegate.swift
-//  mana
+//  Mana
 //
-//  Created by 김은서 on 4/7/25.
+//  Created by 김은서 on 4/9/25.
 //
 
 import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+
+
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
