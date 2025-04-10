@@ -58,18 +58,27 @@ class ViewController: UIViewController {
     
     @objc func addComicToCart(_ notification: Notification) {
             guard let comic = notification.object as? Comic else { return }
-            
-            if let count = comicCountDic[comic.title] {
-                comicCountDic[comic.title] = count + 1
-            } else {
-                comicCountDic[comic.title] = 1
-                choiceComic.append(comic)
-            }
+ 
+        let currentCount = comicCountDic[comic.title] ?? 0
+
+        // 10개 이상이면 추가 막고 알럿 표시
+        if currentCount >= 10 {
+            showManaWarningAlert()
+            return
+        }
+
+        if currentCount > 0 {
+            comicCountDic[comic.title] = currentCount + 1
+        } else {
+            comicCountDic[comic.title] = 1
+            choiceComic.append(comic)
+        }
 
             tableview.reloadData()
         
         updateTotalCountLabel() // <- 총 개수 라벨 업데이트
         updateTotalPriceLabel() // <- 결제금액 업데이트
+       
         }
     
     // MARK: - 장르 스크롤 뷰 + 버튼
