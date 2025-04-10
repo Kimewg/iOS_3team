@@ -104,7 +104,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C692C2312DA3C1DE00BDF857 /* Build configuration list for PBXProject "mana" */;
+			buildConfigurationList = C692C2312DA3C1DE00BDF857 /* Build configuration list for PBXProject "Mana" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -323,7 +323,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C692C2312DA3C1DE00BDF857 /* Build configuration list for PBXProject "mana" */ = {
+		C692C2312DA3C1DE00BDF857 /* Build configuration list for PBXProject "Mana" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C692C24C2DA3C1DF00BDF857 /* Debug */,
