@@ -76,8 +76,8 @@ class ViewController: UIViewController {
 
             tableview.reloadData()
         
-        updateTotalCountLabel() // <- 총 개수 라벨 업데이트
-        updateTotalPriceLabel() // <- 결제금액 업데이트
+        updateTotalCountLabel() // 총 개수 라벨 업데이트
+        updateTotalPriceLabel() // 결제금액 업데이트
        
         }
     
