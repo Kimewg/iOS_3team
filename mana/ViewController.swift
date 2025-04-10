@@ -41,7 +41,7 @@ class ViewController: UIViewController {
         if let actionComics = comicCategory["스포츠"] {
             viewModels = actionComics.map { CollectionViewCellViewModel(comic: $0) }
         }
-        // 라벨 추가 및 제약 설정
+        // 라벨 추가 및 제약 설정 ^^
         view.addSubview(fitstLabel)
         fitstLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(10)
