@@ -36,3 +36,6 @@
 ├─ UILabel        : 결제 금액 라벨
 ├─ UIButton        : 결제하기
 └─ UIButton        : 전체취소
+
+![Simulator Screenshot - iPhone 16 Pro - 2025-04-10 at 21 00 48](https://github.com/user-attachments/assets/1e0f4c95-da9e-4202-967e-9d4b3f70492f)
+
