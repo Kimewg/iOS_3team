@@ -28,7 +28,6 @@ class ViewController: UIViewController {
         )
     
     override func viewDidLoad() {
-        let a = "eunseo"
         super.viewDidLoad()
         view.backgroundColor = .black
         
@@ -41,7 +40,7 @@ class ViewController: UIViewController {
         if let actionComics = comicCategory["스포츠"] {
             viewModels = actionComics.map { CollectionViewCellViewModel(comic: $0) }
         }
-        // 라벨 추가 및 제약 설정 ^^
+        // 라벨 추가 및 제약 설정
         view.addSubview(fitstLabel)
         fitstLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(10)
@@ -54,6 +53,7 @@ class ViewController: UIViewController {
         configureTableView()
         layoutViews()
         configureLayout()
+        updateEmptyStateView()
     }
     
     @objc func addComicToCart(_ notification: Notification) {
@@ -73,12 +73,11 @@ class ViewController: UIViewController {
             comicCountDic[comic.title] = 1
             choiceComic.append(comic)
         }
-
-            tableview.reloadData()
-        
+        tableview.reloadData()
+        updateEmptyStateView()
         updateTotalCountLabel() // 총 개수 라벨 업데이트
         updateTotalPriceLabel() // 결제금액 업데이트
-       
+
         }
     
     // MARK: - 장르 스크롤 뷰 + 버튼
@@ -282,8 +281,44 @@ class ViewController: UIViewController {
         self.totallabel.text = "0원"
         self.updateTotalCountLabel()
         self.tableview.reloadData()
+        self.updateEmptyStateView()
     }
-    
+    // 장바구니가 비어있을 때
+    func updateEmptyStateView() {
+        if choiceComic.isEmpty {
+            let emptyView = UIView()
+            emptyView.frame = tableview.bounds
+
+            //텍스트 라벨
+            let label = UILabel()
+            label.text = "마나가 없습니다"
+            label.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+            label.textColor = .white
+
+            //마나 포션 이미지 (이모지처럼)
+            let imageView = UIImageView(image: UIImage(named: "mana_emoji")) // ← 이 이름으로 Assets에 등록
+            imageView.contentMode = .scaleAspectFit
+            imageView.snp.makeConstraints { make in
+                make.width.height.equalTo(24)
+            }
+
+            //수평 정렬 스택뷰
+            let stack = UIStackView(arrangedSubviews: [imageView, label])
+            stack.axis = .vertical
+            stack.alignment = .center
+            stack.spacing = 8
+
+            let container = UIView()
+            container.addSubview(stack)
+            stack.translatesAutoresizingMaskIntoConstraints = false
+            stack.centerXAnchor.constraint(equalTo: container.centerXAnchor).isActive = true
+            stack.centerYAnchor.constraint(equalTo: container.centerYAnchor).isActive = true
+
+            tableview.backgroundView = container
+        } else {
+            tableview.backgroundView = nil
+        }
+    }
 }
 //장바구니 총갯수 업데이트 프로토콜
 extension ViewController: ComicCellDelegate {
@@ -306,6 +341,7 @@ extension ViewController: ComicCellDelegate {
             tableview.reloadData()
             updateTotalCountLabel()
             updateTotalPriceLabel()
+            updateEmptyStateView()
         }
     }
 }
@@ -321,7 +357,7 @@ extension ViewController: UITableViewDataSource {
         let cell = tableview.dequeueReusableCell(withIdentifier: "ComicCell", for: indexPath) as! ComicCell
         cell.cellConfigure(with: comic)
         cell.delegate = self
-        cell.backgroundColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1)
+        cell.backgroundColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 0)
         return cell
     }
 }

@@ -75,11 +75,14 @@ class ComicCell: UITableViewCell {
             contentView.addSubview($0)
         }
         //폰트 및 스타일 설정
-        titlelabel.font = .systemFont(ofSize: 14)
-        pricelabel.font = .boldSystemFont(ofSize: 14)
+        titlelabel.font = UIFont(name: "Pretendard-Medium", size: 14)
+        titlelabel.textColor = .white
+        pricelabel.font = UIFont(name: "Pretendard-Medium", size: 14)
+        pricelabel.textColor = .white
         pricelabel.textAlignment = .right
         
         countlabel.text = "0"
+        countlabel.textColor = .white
         countlabel.textAlignment = .center
         
         minusbutton.setTitle("–", for: .normal)
